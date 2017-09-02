@@ -1,0 +1,349 @@
+﻿我的愿景
+
+成为业内知名的web前端开发工程师
+
+整理一些前端开发规范文档
+
+这份文档已经写了差不多一年了，最近也更新过了，作为一个有组织和纪律的团队，规范是必须的，毕竟每个coder都有自己的一套风格和规范，为了以后团队的和谐发展，结合前端业界的开发经验，故而写出了一个相对是大而简洁的文档，希望能够对你也有所启发。下面简要的摘录我的文档，详细的可以在本文底部下载PDF文档。
+
+第一部分：文件规范
+
+1. tpl, css, js, img文件均归档至<系统开发规范>约定的目录中;
+
+2. tpl文件命名: 英文命名, 后缀.html,请重命名与php文件同名, 以方便后端添加功能时查找对应页面;
+
+3. css文件命名: 英文命名, 后缀.css. 共用base.css, 首页index.css, 其他页面依实际模块需求命名.;
+
+4. Js文件命名: 英文命名, 后缀.js. 共用common.js, 其他依实际模块需求命名.
+
+第二部分：HTML书写规范
+
+1. 文档类型声明及编码: 统一为html5声明类型; 编码统一为, 书写时利用IDE实现层次分明的缩进;
+
+2. 非特殊情况下样式文件必须外链至<head></head>之间;非特殊情况下JavaScript文件必须外链至页面底部;
+
+3 引入JS库文件, 文件名须包含库名称及版本号及是否为压缩版, 比如jquery-1.7.1.min.js; 引入插件, 文件名格式为库名称+插件名称, 比如jQuery.cookie.js;
+
+4. 所有编码均遵循xhtml标准, 标签 & 属性 & 属性命名 必须由小写字母及下划线数字组成, 且所有标签必须闭合; 属性值必须用双引号包括;
+
+5. 充分利用无兼容性问题的html自身标签, 比如span, em, strong, optgroup, label,等等; 需要为html元素添加自定义属性的时候, 首先要考虑下有没有默认的已有的合适标签去设置, 如果没有, 可以使用须以”data-”为前缀来添加自定义属性，避免使用”data:”等其他命名方式;
+
+6. 语义化html, 如 标题根据重要性用h(同一页面只能有一个h1), 段落标记用p, 列表用ul, 内联元素中不可嵌套块级元素;
+
+7. 尽可能减少div嵌套
+
+8. 书写链接地址时, 必须避免重定向，例如：href=”http://www.example.com/”, 即须在URL地址后面加上“/”；
+
+9. 在页面中尽量避免使用style属性,即style=”…”，应该尽量使用class或者id来定义新的样式，然后再对应的css文件里面修改;
+
+
+一、 网页制作细节
+
+
+---- head区代码规范
+
+head区是指HTML代码的<head>和</head>之间的内容。
+必须加入的标签：
+
+•公司版权注释  <!--- The site is designed by EHM,Inc 07/2005 --->；
+•网页显示字符集。
+简体中文：<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=gb2312">
+繁体中文：<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+英 语：<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"> 
+•网页制作者信息  <META name="author" content="webmaster@maketown.com">
+•网站简介  <META NAME="DESCRIPTION" CONTENT="xxxxxxxxxxxxxxxxxxxxxxxxxx">
+•搜索关键字  <META NAME="keywords" CONTENT="xxxx,xxxx,xxx,xxxxx,xxxx,">
+• 网页的css规范  <LINK href="../css/style.css" rel="stylesheet" type="text/css">
+•网页标题  <title>xxxxxxxxxxxxxxxxxx</title>
+可以选择加入的标签： 
+•设定网页的到期时间。一旦网页过期，必须到服务器上重新调阅。
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08：21：57 GMT">
+•禁止浏览器从本地机的缓存中调阅页面内容。
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+•用来防止别人在框架里调用你的页面。
+<META HTTP-EQUIV="Window-target" CONTENT="_top">
+•自动跳转。
+<META HTTP-EQUIV="Refresh" CONTENT="5;URL=http：//www.yahoo.com">  5指时间停留5秒
+•网页搜索机器人向导。用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。
+<META NAME="robots" CONTENT="none">CONTENT的参数有all,none,index,noindex,follow,nofollow。默认是all。
+•收藏夹图标 www.111cn.net
+  <link rel = "Shortcut Icon" href="favicon.ico">
+•所有的javascript的调用尽量采取外部调用。
+<SCRIPT LANGUAGE="JavaScript" SRC="script/xxxxx.js"></SCRIPT>
+•附<body>标签：
+<body>标签不属于head区，这里强调一下，为了保证浏览器的兼容性，必须设置页面背景<body bgcolor="#FFFFFF">
+
+二、网页制作细节 ---- 字体
+
+•在设定字体样式时对于文字字号样式和行间距应必须使用CSS样式表。禁止在页面中出现 <font size=?> 标记。
+•在网页中中文应首选使用宋体。英文和数字首选使用verdana 和arial 两种字体。一般使用中文宋体的9pt 和11pt 或12px 和14.7px 这是经过优化的字号，黑体字或者宋体字加粗时，一般选用11pt 和14.7px 的字号比较合适。
+•为了最大程度的发挥浏览器自动排版的功能，在一段完整的文字中请尽量不要使用<br> 来人工干预分段。
+•不同语种的文字之间应该有一个半角空格，但避头的符号之前和避尾的符号之后除外，汉字之间的标点要用全角标点，英文字母和数字周围的括号应该使用半角括号。
+•请不要在网页中连续出现多于一个的   也尽量少使用全角空格（英文字符集下，全角空格会变成乱码），空白应该尽量使用 text-indent, padding, margin, hspace, vspace 以及透明的gif 图片来实现。
+•行距建议用百分比来定义，常用的两个行距的值是line-height:120%/150%.
+•排版中我们经常会遇到需要进行首行缩进的处理，不要使用   或者全角空格来达到效果，规范的做法是在样式表中定义 p { text-indent: 2em; } 然后给每一段加上 <p> 标记，注意，一般情况下，请不要省略 </p> 结束标记 。
+
+三、网页制作细节 ---- 链接
+
+•网站中的链接路径全部采用相对路径，一般链接到某一目录下的缺省文件的链接路径不必写全名，如我们不必这样：<a href=”aboutus/index.htm”> 而应该这样：<a href=”aboutus/”>，所有内页指向首页的链接写成<a href=”/”>
+•在浏览器里，当我们点击空链接时，它会自动将当前页面重置到首端，从而影响用户正常的阅读内容，我们用代码“javascript:void(null)”代替原来的“#”标记
+四、网页制作细节 ---- 表格
+1px表格 style="border-collapse: collapse"
+实例如下：
+<table border="1" cellspacing="0" width="32" height="32" style="border-collapse: collapse" bordercolor="#000000" cellpadding="0">
+    <tr>
+        <td></td>
+    </tr>
+</table>
+设置亮、暗边框颜色：表格有亮边框（bordercolorlight）和暗边框（bordercolordark）两个属性可以对表格样式设置。
+<table border="1" width="500" bordercolorlight="#000000" bordercolordark="#FFFFFF">
+
+在写 <table> 互相嵌套时，严格按照的规范，对于单独的一个<table>来说，<table><tr>对齐，<td> 缩进两个半角空格，<td> 中如果还有嵌套的表格，<table>也缩进两个半角空格，如果<td>中没有任何嵌套的表格，</td> 结束标记应该与 <td> 处于同一行，不要换行，如我们注意在源代码中不应有这样的代码：
+    <td><img src=”../images/sample.gif”> </td>
+而应该是这样的：
+    <td><img src=”../images/sample.gif”></td>
+这是因为浏览器认为换行相当于一个半角空格，以上不规范的写法相当于无意中增加一个半角空格，如果确实有必要增加一个半角空格，也应该这样写：
+    <td><img src=”../images/sample.gif”> </td>
+一个网页要尽量避免用整个一张大表格，所有的内容都嵌套在这个大表格之内，因为浏览器在解释页面的元素时，是以表格为单位逐一显示，如果一张网页是嵌套在一个大表格之内，那么很可能造成的后果就是，当浏览者敲入网址，他要先面对一片空白很长时间，然后所有的网页内容同时出现。如果必须这样做，请使用 <tbody>标记，以便能够使这个大表格分块显示 
+五、网页制作细节 ---- 下载速度
+首页Flash 网页大小应限定在 200K 以下，尽可能的使用矢量图形和Action来减小动画大小。非首页静态页面含图片大小应限定在 70K 左右，尽可能的使用背景颜色替换大块同色图片。
+ 
+六、网页制作细节 ---- include
+
+asp标准写法：<!--#include file="inc/index_top.asp" -->
+jsp 标准写法：<%@ include file="../inc/index_top..jsp" %>
+ 
+七、网页制作细节 ---- Alt和Title 
+都是提示性语言标签，请注意它们之间的区别。
+
+在我们浏览网页时，当鼠标停留在图片对象或文字链接上时，在鼠标的右下角有时会出现一个提示信息框。对目标进行一定的注释说明。在一些场合，它的作用是很重要的。
+alt 用来给图片来提示的。Title用来给链接文字或普通文字提示的。用法如下：
+    <p Title="给链接文字提示">文字</p>
+    <a href="#" Title="给链接文字提示">文字</a>
+    <img src="图片.gif" alt="给图片提示"> 
+八、网页制作细节 ---- 缓存
+网页不会被缓存 
+•HTM网页
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+•ASP网页
+    Response.Expires = -1
+    Response.ExpiresAbsolute = Now() - 1
+九、网页制作细节 ---- 浏览器兼容性
+创建站点时，应该明白访问者可能使用各种 Web 浏览器。在已知的其他设计限制下，尽可能将站点设计为具有最大的浏览器兼容性。
+
+目前使用的 Web 浏览器有二十多种，大多数已发行了多个版本。即使您只针对使用 Netscape Navigator 和 Microsoft Internet Explorer 的大多数 Web 用户，但您应明确并不是每个人都在使用这两种浏览器的最新版本。
+
+您的站点越复杂（在布局、动画、多媒体内容和交互方面），跨浏览器兼容的可能性就越小。例如，并非所有的浏览器都可以运行JavaScript。不使用特殊字符的纯文本页面或许能够在任何浏览器中正确显示，但比起有效地使用图形、布局和交互的页面，这样的页面在美感上可能要差得多。所以，应尽量在最佳效果设计和最大浏览器兼容性设计之间取得平衡。
+所有的HTML 标签的属性都要用单引号或者双引号括起，即我们应该写 <a href=”url”> 而不 是 <a href=url>. 
+十、图片处理细节 ---- banner
+•全尺寸banner为468X60px，半尺寸banner为234X60px，小banner为88X31px。
+•另外120X90，120X60也是小图标的标准尺寸。全尺寸banner不超过14K。
+•普遍的banner尺寸760X100，750X120，468X60，468X95，728X90，585X140
+•次级页的pip尺寸360X300，336X280
+•游标:100X100或120X120
+十一、图片处理细节 ---- LOGO的国际标准规范
+为了便于INTERNET上信息的传播，一个统一的国际标准是需要的。实际上已经有了这样的一整套标准。其中关于网站的LOGO，目前有三种规格： 
+•88*31 这是互联网上最普遍的LOGO规格。
+•120*60 这种规格用于一般大小的LOGO。
+•120*90 这种规格用于大型LOGO。
+十二、图片处理细节 ---- 页面修饰图片处理
+图片经过优化以加快下载的速度,有较佳的视觉空间效果，用图要与页面风格、页面内容相符；制作精美，细节处理得当
+
+第三部分：CSS规范
+
+1. 编码统一为utf-8;
+
+2.公用文件：协作开发过程中，会引入默认的base.css(里面包括了css reset、常用的css间距，css字体，css大小等，详细参见base.css)；
+
+3. class与id命名: ,样式名称由 小写英文 、 数字 和 _ 来组合命名, 如i_comment, fontred, width200; 避免使用中文拼音, 尽量使用简易的单词组合；命名要语义化, 简明化。
+
+4. 为JavaScript预留钩子的命名, 尽量使用id属性，可以更快的获取到dom。
+
+5. css属性书写顺序, 建议遵循: 布局定位属性–>自身属性–>文本属性–>其他属性. 此条可根据自身习惯书写, 但尽量保证同类属性写在一起. 属性列举: 布局定位属性主要包括: display 、 list-style 、 position（相应的 top,right,bottom,left） 、 float & clear 、 visibility 和 overflow； 自身属性主要包括: width 、height 、 margin 、 padding 、 border 和 background; 文本属性主要包括：color 、 font、 text-decoration 、 text-align 、 vertical-align 、 white- space 和其他content; 我所列出的这些属性只是最常用到的, 并不代表全部;
+
+6. 书写代码前, 考虑并提高样式重复使用率;
+
+7. 背景图片请尽可能使用sprite技术, 减小http请求, 考虑到多人协作开发, sprite按模块制作;
+
+8. 必须为大区块样式添加注释, 小区块适量注释;
+
+9. 代码缩进与格式: 建议单行书写, 可根据自身习惯, 后期优化会统一处理;
+
+
+常用的CSS命名规则
+头：header
+内容：content/container
+尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体?丫挚矶龋?rapper
+左右中：left right center
+登录条：loginbar
+标志：logo
+广告：banner
+页面主体：main
+热点：hot
+新闻：news
+下载：download
+子导航：subnav
+菜单：menu
+子菜单：submenu
+搜索：search
+友情链接：friendlink
+页脚：footer
+版权：copyright
+滚动：scroll
+内容：content
+标签：tags
+文章列表：list
+提示信息：msg
+小技巧：tips
+栏目标题：title
+加入：joinus
+指南：guide
+服务：service
+注册：regsiter
+状态：status
+投票：vote
+合作伙伴：partner
+
+注释的写法:
+/* Header */
+内容区
+/* End Header */
+
+id的命名:
+1)页面结构
+
+容器: container
+页头：header
+内容：content/container
+页面主体：main
+页尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体?丫挚矶龋?rapper
+左右中：left right center
+
+(2)导航
+
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary
+
+(3)功能
+
+标志：logo
+广告：banner
+登陆：login
+登录条：loginbar
+注册：register
+搜索：search
+功能区：shop
+标题：title
+加入：joinus
+状态：status
+按钮：btn
+滚动：scroll
+标?页：tab
+文章列表：list
+提示信息：msg
+当前的: current
+小技巧：tips
+图标: icon
+注释：note
+指南：guild
+服务：service
+热点：hot
+新闻：news
+下载：download
+投票：vote
+合作伙伴：partner
+友情链接：link
+版权：copyright
+
+注意事项::
+1.一律小写;
+2.尽量用英文;
+3.不加中??和下划线;
+4.尽量不缩写，除非一看就明白的单词。
+
+ 
+
+CSS样式表文件命名
+主要的 master.css
+模块 module.css
+基本共用 base.css
+布局、版面 layout.css
+主题 themes.css
+专栏 columns.css
+文字 font.css
+表单 forms.css
+补丁 mend.css
+打印 print.css
+
+
+第四部分：JavaScript规范
+
+1. 文件编码统一为utf-8, 书写过程过, 每行代码结束必须有分号; 原则上所有功能均根据XXX项目需求原生开发, 以避免网上down下来的代码造成的代码污染(沉冗代码 || 与现有代码冲突 || …);
+
+2. 库引入: 原则上仅引入jQuery库, 若需引入第三方库, 须与团队其他人员讨论决定;
+
+3. 变量命名: 驼峰式命名. 原生JavaScript变量要求是纯英文字母, 首字母须小写, 如iTaoLun;
+
+另, 要求变量集中声明, 避免全局变量.
+
+4. 类命名: 首字母大写, 驼峰式命名. 如 ITaoLun;
+
+5. 函数命名: 首字母小写驼峰式命名. 如iTaoLun();
+
+6. 命名语义化, 尽可能利用英文单词或其缩写;
+
+7. 尽量避免使用存在兼容性及消耗资源的方法或属性, 比如eval_r() & innerText;
+
+8. 后期优化中, JavaScript非注释类中文字符须转换成unicode编码使用, 以避免编码错误时乱码显示;
+
+9. 代码结构明了, 加适量注释. 提高函数重用率;
+
+10. 注重与html分离, 减小reflow, 注重性能.
+
+第五部分：图片规范
+
+1. 每个模块都会增加一个图片文件夹，方便后期维护和处理，请将同一个模块的图片放在同一个文件夹里面，图片文件命名尽量跟css文件的命名相同，尽量使用小写命名。
+
+2. 图片格式仅限于gif || png || jpg;
+
+3. 命名全部用小写英文字母 || 数字 || -(统一用分划线衔接) 的组合，其中不得包含汉字 || 空格 || 特殊字符；尽量用易懂的词汇, 便于团队其他成员理解; 另, 命名分头尾两部分, 用分划线隔开, 比如ad-left01.gif || btn-submit.gif;
+
+4. 在保证视觉效果的情况下选择最小的图片格式与图片质量, 以减少加载时间;
+
+5. 尽量避免使用半透明的png图片(若使用, 请参考css规范相关说明);
+
+6. 运用css sprite技术集中小的背景图或图标, 减小页面http请求。
+
+第六部分：注释规范
+
+1. html注释: 注释格式 , 只能在注释的始末位置,不可置入注释文字区域;
+
+<!-- 头部 -->  <!-- //头部 -->包围，请务必要分开注释的文字（即注释文字中加空格）
+
+2. css注释: 注释格式 ;/**/
+
+3. JavaScript注释, 单行注释使用’//这儿是单行注释’ ,多行注释使用 ;/**/
+
+第七部分：开发及测试工具约定（见文档，下同）
+第八部分：其他规范
+第九部分：浏览器css hack
+文档说明

@@ -1,0 +1,10 @@
+//随机颜色
+方法一	
+	var a = "#"+ Math.ceil(Math.random()*0xFFFFFF).toString(16);
+方法二
+	var a= "#" +Math.floor(Math.random()*16777215).toString(16);
+
+方法三   此方法比以上两种较为全面（建议使用，上面两种有bug，可能会出现位数不全的现象。）
+    var a= "#"+('000000'+parseInt(Math.random()*0x10000000).toString(16)).slice(-6);	
+
+

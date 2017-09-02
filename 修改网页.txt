@@ -1,0 +1,8 @@
+javascript:document.body.contentEditable='true';document.designMode='on';void o
+
+
+然后回车，你就可以随心所欲的修改这个网站啦！
+
+输入如下代码，将退出编辑状态！
+
+javascript:document.body.contentEditable='false';document.designMode='on';void o

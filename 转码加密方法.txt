@@ -1,0 +1,8 @@
+encodeURI("电影");
+decodeURI("%E7%94%B5%E5%BD%B1");
+
+escape("电影")
+unescape("%E7%94%B5%E5%BD%B1");
+
+把时间1799090984转为正常时间
+var datetime = new Date(parseInt(1799090984) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');

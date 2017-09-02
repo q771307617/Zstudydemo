@@ -1,0 +1,97 @@
+E:nth-of-type(n) { sRules }
+
+匹配同类型中的第n个同级兄弟元素E。 
+要使该属性生效，E元素必须是某个元素的子元素，E的父元素最高是html，即E可以是html的子元素，也就是说E可以是body 
+该选择符总是能命中父元素的第n个为E的子元素，不论第n个子元素是否为E 
+有一点需要注意的是： 
+HTML示例代码：
+
+<div>
+	<p>第1个p</p>
+	<p>第2个p</p>
+	<span>第1个span</span>
+	<p>第3个p</p>
+	<span>第2个span</span>
+</div>如上HTML，假设要命中第一个span：
+
+span:nth-of-type(1){color:#f00;}如果使用E:nth-child(n)：
+
+span:nth-child(3){color:#f00;}
+
+
+//////
+E:nth-last-of-type(n) { sRules }
+
+匹配同类型中的倒数第n个同级兄弟元素E。 
+要使该属性生效，E元素必须是某个元素的子元素，E的父元素最高是html，即E可以是html的子元素，也就是说E可以是body 
+该选择符总是能命中父元素的倒数第n个为E的子元素，不论倒数第n个子元素是否为E 
+
+
+
+
+///////
+E:nth-child(n) { sRules }
+
+匹配父元素的第n个子元素E，假设该子元素不是E，则选择符无效。 
+要使该属性生效，E元素必须是某个元素的子元素，E的父元素最高是body，即E可以是body的子元素 
+该选择符允许使用一个乘法因子(n)来作为换算方式，比如我们想选中所有的偶数子元素E，那么选择符可以写成：E:nth-child(2n) 
+使用E:nth-child(n)实现奇偶： 
+
+示例代码：
+
+<style>
+li:nth-child(2n){color:#f00;} /* 偶数 */
+li:nth-child(2n+1){color:#000;} /* 奇数 */
+</style>
+
+<ul>
+	<li>列表项一</li>
+	<li>列表项二</li>
+	<li>列表项三</li>
+	<li>列表项四</li>
+</ul>因为(n)代表一个乘法因子，可以是0, 1, 2, 3, ..., 所以(2n)换算出来会是偶数，而(2n+1)换算出来会是奇数
+
+该选择符允许使用一些关键字，比如：odd, even
+
+使用odd, even实现奇偶：
+
+<style>
+li:nth-child(even){color:#f00;} /* 偶数 */
+li:nth-child(odd){color:#000;} /* 奇数 */
+</style>
+
+<ul>
+	<li>列表项一</li>
+	<li>列表项二</li>
+	<li>列表项三</li>
+	<li>列表项四</li>
+</ul>
+
+
+
+//////
+E:nth-last-child(n) { sRules }
+
+匹配父元素的倒数第n个子元素E，假设该子元素不是E，则选择符无效。 
+要使该属性生效，E元素必须是某个元素的子元素，E的父元素最高是body，即E可以是body的子元素 
+该选择符允许使用一个乘法因子(n)来作为换算方式，比如我们想选中倒数第一个子元素E，那么选择符可以写成：E:nth-last-child(1) 
+有一点需要注意的是： 
+HTML示例代码：
+
+<div>
+	<p>第1个p</p>
+	<p>第2个p</p>
+	<span>第1个span</span>
+	<p>第3个p</p>
+	<span>第2个span</span>
+</div>如上HTML，假设要命中倒数第一个p(即正数第3个p)，那么CSS选择符应该是：
+
+p:nth-last-child(2){color:#f00;}而不是：
+
+p:nth-last-child(1){color:#f00;}因为倒数第1个p，其实是倒数第2个子元素。基于选择符从右到左解析，首先要找到第1个子元素，然后再去检查该子元素是否为p，如果不是p，则n递增，继续查找
+
+假设不确定倒数第1个子元素是否为E，但是又想命中倒数第1个E，应该这样写：
+
+p:last-of-type{color:#f00;}或者这样写：
+
+p:nth-last-of-type(1){color:#f00;}
